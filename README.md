@@ -34,10 +34,9 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 
 - Setup Routes and pages.
 - Setup context and types. Create first page basic structure ans setup React Form for tests.
--
+- Create Form structure and types. Implement logic for controlls and form states.
 
 ### Built with
 
 - [React](https://reactjs.org/) - JS library
 - [Styled Components](https://styled-components.com/) - For styles
-
