@@ -1,7 +1,11 @@
-import React from "react";
+import PersonalInfo from "../components/steps/PersonalInfo";
 
 const HomePage = () => {
-  return <main>HomePage</main>;
+  return (
+    <main>
+      <PersonalInfo />
+    </main>
+  );
 };
 
 export default HomePage;

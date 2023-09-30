@@ -1,23 +1,32 @@
-import { useContext, createContext, useState, useReducer } from "react";
-import reducer from "./reducers/reducer";
+import { useContext, createContext, useState } from "react";
+import { ReactNode } from "react";
 
-const AppContext = createContext();
+type Form = {
+  name: string;
+  email: string;
+  phone: string | number;
+  plan: "Arcade" | "Advanced" | "Pro" | null;
+  addOns: string[] | null;
+};
 
-export const AppProvider = ({ children }) => {
-  const initialState = {}; //Can be anything
-  const [state, dispatch] = useReducer(reducer, initialState);
+type AppContextType = {
+  formData: Form;
+  setFormData: React.Dispatch<React.SetStateAction<Form>>;
+};
 
-  const [isDarkMode, setIsDarkMode] = useState(false); //Example
+const AppContext = createContext<AppContextType | null>(null);
+
+export const AppProvider = ({ children }: { children: ReactNode }) => {
+  const [formData, setFormData] = useState<Form>({
+    name: "",
+    email: "",
+    phone: "",
+    plan: null,
+    addOns: null,
+  });
 
   return (
-    <AppContext.Provider
-      value={{
-        isDarkMode,
-        setIsDarkMode,
-        state,
-        dispatch,
-      }}
-    >
+    <AppContext.Provider value={{ formData, setFormData }}>
       {children}
     </AppContext.Provider>
   );

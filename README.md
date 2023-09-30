@@ -33,6 +33,8 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 ## My process
 
 - Setup Routes and pages.
+- Setup context and types. Create first page basic structure ans setup React Form for tests.
+-
 
 ### Built with
 
