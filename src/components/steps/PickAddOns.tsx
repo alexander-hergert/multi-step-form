@@ -1,33 +1,19 @@
-import { UseFormRegister, FieldErrors } from "react-hook-form";
+import { InfoProps } from "../../types";
 
-interface FormInput {
-  name: string;
-  email: string;
-  phone: string;
-  plan: "Arcade" | "Advanced" | "Pro" | null;
-  yearly: boolean;
-  addOns: string[] | null;
-}
-
-interface PersonalInfoProps {
-  register: UseFormRegister<FormInput>;
-  errors: FieldErrors<FormInput>;
-}
-
-const PickAddOns = ({ register, errors }: PersonalInfoProps) => {
+const PickAddOns = ({ register, errors }: InfoProps) => {
   return (
     <div>
       <article>
-        <h1>Personal info</h1>
-        <p>Please provide your name, email address, and phone number.</p>
+        <h1>Pick add-ons</h1>
+        <p>Add-ons help enhance your gaming experience.</p>
       </article>
       <label>
         <input type="checkbox" value="online-service" {...register("addOns")} />
-        Checkbox 1
+        Online service Access to multiplayer games +$1/mo +$10/yr
       </label>
       <label>
         <input type="checkbox" value="larger-storage" {...register("addOns")} />
-        Checkbox 2
+        Larger storage Extra 1TB of cloud save +$2/mo +$20/yr
       </label>
       <label>
         <input
@@ -35,7 +21,7 @@ const PickAddOns = ({ register, errors }: PersonalInfoProps) => {
           value="customizable-profile"
           {...register("addOns")}
         />
-        Checkbox 3
+        Customizable Profile Custom theme on your profile +$2/mo +$20/yr
       </label>
     </div>
   );

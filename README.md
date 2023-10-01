@@ -33,8 +33,9 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 ## My process
 
 - Setup Routes and pages.
-- Setup context and types. Create first page basic structure ans setup React Form for tests.
+- Setup context and types. Create first page basic structure and setup React Form for tests.
 - Create Form structure and types. Implement logic for controlls and form states.
+- Separate types into types.tsx. Fill basic content and setup basic structure of steps.
 
 ### Built with
 

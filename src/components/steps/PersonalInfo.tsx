@@ -1,20 +1,6 @@
-import { UseFormRegister, FieldErrors } from "react-hook-form";
+import { InfoProps } from "../../types";
 
-interface FormInput {
-  name: string;
-  email: string;
-  phone: string;
-  plan: "Arcade" | "Advanced" | "Pro" | null;
-  yearly: boolean;
-  addOns: string[] | null;
-}
-
-interface PersonalInfoProps {
-  register: UseFormRegister<FormInput>;
-  errors: FieldErrors<FormInput>;
-}
-
-const PersonalInfo = ({ register, errors }: PersonalInfoProps) => {
+const PersonalInfo = ({ register, errors }: InfoProps) => {
   return (
     <div>
       <article>
@@ -25,7 +11,8 @@ const PersonalInfo = ({ register, errors }: PersonalInfoProps) => {
         Name
       </label>
       <input
-        defaultValue="Stephen King"
+        defaultValue=""
+        placeholder="e.g. Stephen King"
         {...register("name", {
           required: true,
           maxLength: 20,
@@ -37,11 +24,19 @@ const PersonalInfo = ({ register, errors }: PersonalInfoProps) => {
       <label htmlFor="" className="block">
         Email Address
       </label>
-      <input defaultValue="stephenking@lorem.com" {...register("email")} />
+      <input
+        defaultValue=""
+        placeholder="e.g. stephenking@lorem.com"
+        {...register("email")}
+      />
       <label htmlFor="" className="block">
         Phone Number
       </label>
-      <input defaultValue="1234567890" {...register("phone")} />
+      <input
+        defaultValue=""
+        placeholder="e.g. +1 234 567 890"
+        {...register("phone")}
+      />
     </div>
   );
 };

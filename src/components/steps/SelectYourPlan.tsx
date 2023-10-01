@@ -1,25 +1,11 @@
-import { UseFormRegister, FieldErrors } from "react-hook-form";
+import { InfoProps } from "../../types";
 
-interface FormInput {
-  name: string;
-  email: string;
-  phone: string;
-  plan: "Arcade" | "Advanced" | "Pro" | null;
-  yearly: boolean;
-  addOns: string[] | null;
-}
-
-interface PersonalInfoProps {
-  register: UseFormRegister<FormInput>;
-  errors: FieldErrors<FormInput>;
-}
-
-const SelectYourPlan = ({ register, errors }: PersonalInfoProps) => {
+const SelectYourPlan = ({ register, errors }: InfoProps) => {
   return (
     <div>
       <article>
-        <h1>Personal info</h1>
-        <p>Please provide your name, email address, and phone number.</p>
+        <h1>Select your plan</h1>
+        <p>You have the option of monthly or yearly billing.</p>
       </article>
       <div>
         <label>
@@ -29,15 +15,15 @@ const SelectYourPlan = ({ register, errors }: PersonalInfoProps) => {
             {...register("plan")}
             defaultChecked
           />
-          Arcade
+          Arcade $9/mo $90/yr 2 months free
         </label>
         <label>
           <input type="radio" value="Advanced" {...register("plan")} />
-          Advanced
+          Advanced $12/mo $120/yr 2 months free
         </label>
         <label>
           <input type="radio" value="Pro" {...register("plan")} />
-          Pro
+          Pro $15/mo $150/yr 2 months free
         </label>
       </div>
       <div>

@@ -1,7 +1,11 @@
-import React from "react";
-
 const ConfirmationPage = () => {
-  return <div>ConfirmationPage</div>;
+  return (
+    <section>
+      Thank you! Thanks for confirming your subscription! We hope you have fun
+      using our platform. If you ever need support, please feel free to email us
+      at support@loremgaming.com.
+    </section>
+  );
 };
 
 export default ConfirmationPage;

@@ -1,11 +1,4 @@
-interface FormInput {
-  name: string;
-  email: string;
-  phone: string;
-  plan: "Arcade" | "Advanced" | "Pro" | null;
-  yearly: boolean;
-  addOns: string[] | null;
-}
+import { FormInput } from "../../types";
 
 const FinishingUp = (values: FormInput) => {
   let addOns: string = "";
@@ -17,8 +10,8 @@ const FinishingUp = (values: FormInput) => {
   return (
     <div>
       <article>
-        <h1>Personal info</h1>
-        <p>Please provide your name, email address, and phone number.</p>
+        <h1>Finishing up</h1>
+        <p>Double-check everything looks OK before confirming.</p>
       </article>
       <article>
         <div>
@@ -31,7 +24,7 @@ const FinishingUp = (values: FormInput) => {
         </div>
         <div>
           <h2></h2>
-          <p></p>
+          <p>Total (per month/year)</p>
         </div>
       </article>
     </div>
