@@ -6,7 +6,7 @@ export interface FormInput {
   phone: string;
   plan: "Arcade" | "Advanced" | "Pro" | null;
   yearly: boolean;
-  addOns: string[] | null;
+  addOns: string[] | boolean;
 }
 
 export interface InfoProps {

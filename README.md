@@ -36,6 +36,7 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 - Setup context and types. Create first page basic structure and setup React Form for tests.
 - Create Form structure and types. Implement logic for controlls and form states.
 - Separate types into types.tsx. Fill basic content and setup basic structure of steps.
+- Create PersonalInfo with more validations. Create Appnavigation structure. Simulating post and checking for form.
 
 ### Built with
 

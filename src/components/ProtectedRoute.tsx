@@ -1,14 +1,14 @@
 import { Navigate } from "react-router-dom";
+import ConfirmationPage from "../pages/ConfirmationPage";
+import { useGlobalContext } from "../context";
 
-const ProtectedRouter = () => {
-  //todo
-  //add logic to check
-  //checking the state for form object formular
-  if (true) {
+const ProtectedRoute = () => {
+  const { formReady } = useGlobalContext()!;
+  if (!formReady) {
     return <Navigate to="/" />;
   } else {
-    return <Navigate to="/thankyou" />;
+    return <ConfirmationPage />;
   }
 };
 
-export default ProtectedRouter;
+export default ProtectedRoute;

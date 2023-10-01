@@ -12,11 +12,15 @@ type Form = {
 type AppContextType = {
   formData: Form;
   setFormData: React.Dispatch<React.SetStateAction<Form>>;
+  formReady: boolean;
+  setFormReady: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 const AppContext = createContext<AppContextType | null>(null);
 
 export const AppProvider = ({ children }: { children: ReactNode }) => {
+  const [formReady, setFormReady] = useState<boolean>(false);
+
   const [formData, setFormData] = useState<Form>({
     name: "",
     email: "",
@@ -26,7 +30,9 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   });
 
   return (
-    <AppContext.Provider value={{ formData, setFormData }}>
+    <AppContext.Provider
+      value={{ formData, setFormData, formReady, setFormReady }}
+    >
       {children}
     </AppContext.Provider>
   );
