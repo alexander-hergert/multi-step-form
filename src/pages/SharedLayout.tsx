@@ -1,13 +1,16 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
+import Wrapper from "../components/Wrapper";
+import { AppProvider } from "../context";
 
 const SharedLayout = () => {
   return (
-    <>
-      {/* <Navbar /> */}
-      <Outlet />
+    <AppProvider>
+      <Wrapper>
+        <Outlet />
+      </Wrapper>
       <Footer />
-    </>
+    </AppProvider>
   );
 };
 

@@ -37,6 +37,7 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 - Create Form structure and types. Implement logic for controlls and form states.
 - Separate types into types.tsx. Fill basic content and setup basic structure of steps.
 - Create PersonalInfo with more validations. Create Appnavigation structure. Simulating post and checking for form.
+- Refactor states into the context. Create Wrapper for all pages.
 
 ### Built with
 
