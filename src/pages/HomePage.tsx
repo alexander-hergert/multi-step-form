@@ -10,7 +10,7 @@ const HomePage = () => {
   const values: FormInput = watch();
 
   return (
-    <form>
+    <form className="py-5">
       {page === 1 && <PersonalInfo register={register} errors={errors} />}
       {page === 2 && <SelectYourPlan register={register} errors={errors} />}
       {page === 3 && <PickAddOns register={register} errors={errors} />}
