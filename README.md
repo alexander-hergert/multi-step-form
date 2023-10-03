@@ -38,6 +38,7 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 - Separate types into types.tsx. Fill basic content and setup basic structure of steps.
 - Create PersonalInfo with more validations. Create Appnavigation structure. Simulating post and checking for form.
 - Refactor states into the context. Create Wrapper for all pages.
+- Design Shared stylings mobile and desktop.
 
 ### Built with
 
