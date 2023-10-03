@@ -39,7 +39,8 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 - Create PersonalInfo with more validations. Create Appnavigation structure. Simulating post and checking for form.
 - Refactor states into the context. Create Wrapper for all pages.
 - Design Shared stylings mobile and desktop.
-- Style Form on Step 1 Personal Info. Add active and error states.
+- Style Form on Step 1 "Personal Info". Add active and error states.
+- Style Form on Step 2 "Select your plan". Add active states.
 
 ### Built with
 

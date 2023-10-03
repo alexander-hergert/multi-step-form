@@ -9,7 +9,7 @@ const Input = styled.input<{ $bordercolor?: string }>`
   outline-color: purple;
   border-color: ${(props) => props.$bordercolor || "lightgray"};
 
-  &:hover{
+  &:hover {
     cursor: pointer;
   }
 `;

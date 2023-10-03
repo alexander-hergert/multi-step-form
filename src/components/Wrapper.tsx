@@ -42,7 +42,7 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
   const { page, handlePrevPage, handleNextPage } = useGlobalContext()!;
 
   return (
-    <main className="md:bg-white md:rounded-xl md:overflow-hidden md:p-5 max-md:w-[100vw] h-[100vh] md:h-[80vh] md:flex relative">
+    <main className="md:bg-white md:rounded-xl md:overflow-hidden md:p-5 max-md:w-[100vw] max-md:min-h-[100vh] h-[100vh] md:h-[80vh] md:flex">
       <Styles>
         <div className="md:flex gap-5 items-center justify-center">
           <Circle
@@ -109,7 +109,7 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
         <section className="m-5 shadow max-md:relative min-h-[50vh] bg-white overflow-hidden p-5 rounded-3xl bottom-[5.5rem]">
           {children}
         </section>
-        <section className="md:mt-20 p-5 w-full shadow max-md:absolute bottom-0 flex bg-white justify-between">
+        <section className="md:mt-20 p-5 w-full shadow flex bg-white justify-between">
           <GoBack
             disabled={page === 1}
             className={page === 1 ? "opacity-0" : ""}
