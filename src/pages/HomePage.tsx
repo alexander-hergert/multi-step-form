@@ -12,8 +12,12 @@ const HomePage = () => {
   return (
     <form className="py-5">
       {page === 1 && <PersonalInfo register={register} errors={errors} />}
-      {page === 2 && <SelectYourPlan register={register} errors={errors} />}
-      {page === 3 && <PickAddOns register={register} errors={errors} />}
+      {page === 2 && (
+        <SelectYourPlan {...values} register={register} errors={errors} />
+      )}
+      {page === 3 && (
+        <PickAddOns {...values} register={register} errors={errors} />
+      )}
       {page === 4 && <FinishingUp {...values} />}
     </form>
   );

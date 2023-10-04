@@ -5,7 +5,7 @@ export interface FormInput {
   email: string;
   phone: string;
   plan: "Arcade" | "Advanced" | "Pro" | null;
-  yearly: boolean;
+  yearly: string;
   addOns: string[] | boolean;
 }
 

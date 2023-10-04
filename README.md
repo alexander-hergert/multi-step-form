@@ -41,6 +41,8 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 - Design Shared stylings mobile and desktop.
 - Style Form on Step 1 "Personal Info". Add active and error states.
 - Style Form on Step 2 "Select your plan". Add active states.
+- Style Form on Step 3 "Pick Add Ons". Add active states.
+- Refactor Forms to use values from useForm.
 
 ### Built with
 

@@ -1,6 +1,6 @@
 import { InfoProps } from "../../types";
-import { useState } from "react";
 import styled from "styled-components";
+import { useGlobalContext } from "../../context";
 
 const Label = styled.label<{ $bordercolor?: string }>`
   display: block;
@@ -44,8 +44,9 @@ const Input = styled.input`
 `;
 
 const SelectYourPlan = ({ register, errors }: InfoProps) => {
-  const [plan, setPlan] = useState<string>("arcade");
-  const [isYear, setIsYear] = useState<boolean>(false);
+  const { watch } = useGlobalContext()!;
+  const values = watch();
+  console.log(values);
 
   return (
     <div>
@@ -57,14 +58,13 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
       </article>
       <div className="md:flex gap-5">
         <Label
-          onClick={() => setPlan("arcade")}
-          className={plan === "arcade" ? " bg-slate-300 p-3" : "p-3"} //with TailwindCSS
-          $bordercolor={plan === "arcade" ? "purple" : ""} //with Styled Components props
+          className={values.plan === "arcade" ? " bg-slate-300 p-3" : "p-3"} //with TailwindCSS
+          $bordercolor={values.plan === "arcade" ? "purple" : ""} //with Styled Components props
         >
           <input
             className="hidden"
             type="radio"
-            value="Arcade"
+            value="arcade"
             {...register("plan")}
             defaultChecked
           />
@@ -73,22 +73,27 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
           </div>
           <div>
             <h2 className="text-blue-900 font-bold">Arcade</h2>
-            {!isYear && <p className="text-slate-400">$9/mo</p>}
-            {isYear && <p className="text-slate-400">$90/yr</p>}
-            {isYear && <p className="text-blue-900">2 months free</p>}
+            {values.yearly === "false" && (
+              <p className="text-slate-400">$9/mo</p>
+            )}
+            {values.yearly === "true" && (
+              <p className="text-slate-400">$90/yr</p>
+            )}
+            {values.yearly === "true" && (
+              <p className="text-blue-900">2 months free</p>
+            )}
           </div>
         </Label>
         <Label
-          onClick={() => setPlan("advanced")}
           className={
-            plan === "advanced" ? " bg-slate-300 p-3 my-5" : " p-3 my-5"
+            values.plan === "advanced" ? " bg-slate-300 p-3 my-5" : " p-3 my-5"
           }
-          $bordercolor={plan === "advanced" ? "purple" : ""}
+          $bordercolor={values.plan === "advanced" ? "purple" : ""}
         >
           <input
             className="hidden"
             type="radio"
-            value="Advanced"
+            value="advanced"
             {...register("plan")}
           />
           <div>
@@ -96,20 +101,27 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
           </div>
           <div>
             <h2 className="text-blue-900 font-bold">Advanced</h2>
-            {!isYear && <p className="text-slate-400">$12/mo</p>}
-            {isYear && <p className="text-slate-400">$120/yr</p>}
-            {isYear && <p className="text-blue-900">2 months free</p>}
+            {values.yearly === "false" && (
+              <p className="text-slate-400">$12/mo</p>
+            )}
+            {values.yearly === "true" && (
+              <p className="text-slate-400">$120/yr</p>
+            )}
+            {values.yearly === "true" && (
+              <p className="text-blue-900">2 months free</p>
+            )}
           </div>
         </Label>
         <Label
-          onClick={() => setPlan("pro")}
-          className={plan === "pro" ? " bg-slate-300 p-3 my-5" : "p-3 my-5"}
-          $bordercolor={plan === "pro" ? "purple" : ""}
+          className={
+            values.plan === "pro" ? " bg-slate-300 p-3 my-5" : "p-3 my-5"
+          }
+          $bordercolor={values.plan === "pro" ? "purple" : ""}
         >
           <input
             className="hidden"
             type="radio"
-            value="Pro"
+            value="pro"
             {...register("plan")}
           />
           <div>
@@ -117,18 +129,23 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
           </div>
           <div>
             <h2 className="text-blue-900 font-bold">Pro</h2>
-            {!isYear && <p className="text-slate-400">Pro $15/mo</p>}
-            {isYear && <p className="text-slate-400">$150/yr</p>}
-            {isYear && <p className="text-blue-900">2 months free</p>}
+            {values.yearly === "false" && (
+              <p className="text-slate-400">Pro $15/mo</p>
+            )}
+            {values.yearly === "true" && (
+              <p className="text-slate-400">$150/yr</p>
+            )}
+            {values.yearly === "true" && (
+              <p className="text-blue-900">2 months free</p>
+            )}
           </div>
         </Label>
       </div>
       <div className="md:mt-10 bg-slate-200 rounded-lg py-3 flex justify-center items-center gap-5">
         <label
-          onClick={() => setIsYear(false)}
           htmlFor="monthly"
           className={
-            !isYear
+            values.yearly === "false"
               ? "text-blue-900 cursor-pointer"
               : "text-slate-500 cursor-pointer"
           }
@@ -137,28 +154,26 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
         </label>
         <div className="bg-blue-900 rounded-xl w-10 h-5 flex items-center justify-center">
           <Input
-            onClick={() => setIsYear(false)}
             id="monthly"
             type="radio"
             value="false"
             {...register("yearly")}
-            defaultChecked
-            className={isYear ? "opacity-0" : ""}
+            defaultChecked={!values.yearly ? true : values.yearly === "false"}
+            className={values.yearly === "true" ? "opacity-0" : ""}
           />
           <Input
-            onClick={() => setIsYear(true)}
             id="yearly"
             type="radio"
             value="true"
             {...register("yearly")}
-            className={!isYear ? "opacity-0" : ""}
+            defaultChecked={values.yearly === "true"}
+            className={values.yearly === "false" ? "opacity-0" : ""}
           />
         </div>
         <label
-          onClick={() => setIsYear(true)}
           htmlFor="yearly"
           className={
-            isYear
+            values.yearly === "true"
               ? "text-blue-900 cursor-pointer"
               : "text-slate-500 cursor-pointer"
           }
