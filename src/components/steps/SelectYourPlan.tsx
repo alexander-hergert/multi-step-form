@@ -1,6 +1,8 @@
 import { InfoProps } from "../../types";
 import styled from "styled-components";
 import { useGlobalContext } from "../../context";
+import { motion } from "framer-motion";
+import { fadeRight } from "../../animations";
 
 const Label = styled.label<{ $bordercolor?: string }>`
   display: block;
@@ -48,7 +50,11 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
   const values = watch();
 
   return (
-    <div>
+    <motion.div
+      initial={fadeRight.hidden}
+      animate={fadeRight.visible}
+      transition={{ duration: 0.5 }}
+    >
       <article>
         <h1 className="text-4xl font-bold text-primary-marine-blue">
           Select your plan
@@ -186,7 +192,7 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
           Yearly
         </label>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

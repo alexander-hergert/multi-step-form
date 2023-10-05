@@ -1,6 +1,8 @@
 import { InfoProps } from "../../types";
 import styled from "styled-components";
 import { useGlobalContext } from "../../context";
+import { motion } from "framer-motion";
+import { fadeRight } from "../../animations";
 
 const Label = styled.label<{ $bordercolor?: string }>`
   display: block;
@@ -44,7 +46,11 @@ const PickAddOns = ({ register, errors }: InfoProps) => {
   const values = watch();
 
   return (
-    <div>
+    <motion.div
+      initial={fadeRight.hidden}
+      animate={fadeRight.visible}
+      transition={{ duration: 0.5 }}
+    >
       <article>
         <h1 className="text-4xl font-bold text-primary-marine-blue">
           Pick add-ons
@@ -145,7 +151,7 @@ const PickAddOns = ({ register, errors }: InfoProps) => {
           <p className="text-primary-purplish-blue">+$20/yr</p>
         )}
       </Label>
-    </div>
+    </motion.div>
   );
 };
 

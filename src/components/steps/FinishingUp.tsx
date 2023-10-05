@@ -1,9 +1,9 @@
 import { useGlobalContext } from "../../context";
 import { FormInput } from "../../types";
+import { motion } from "framer-motion";
+import { fadeRight } from "../../animations";
 
 const FinishingUp = (values: FormInput) => {
-  console.log(values);
-
   const { setPage } = useGlobalContext()!;
 
   //using total to evaluate the total price
@@ -39,7 +39,11 @@ const FinishingUp = (values: FormInput) => {
   }
 
   return (
-    <div>
+    <motion.div
+      initial={fadeRight.hidden}
+      animate={fadeRight.visible}
+      transition={{ duration: 0.5 }}
+    >
       <article>
         <h1 className="text-4xl font-bold text-primary-marine-blue">
           Finishing up
@@ -79,28 +83,35 @@ const FinishingUp = (values: FormInput) => {
               : null}
           </p>
         </div>
-        {values.addOns?.map((addOn: string) => (
-          <div key={addOn} className="flex justify-between">
-            <p className="text-neutral-cool-gray">{addOn}</p>
-            <p className="text-neutral-cool-gray py-1">
-              {addOn === "Online service" && values.yearly === "true"
-                ? "+$10/yr"
-                : addOn === "Online service" && values.yearly === "false"
-                ? "+$1/mo"
-                : null}
-              {addOn === "Larger storage" && values.yearly === "true"
-                ? "+$20/yr"
-                : addOn === "Larger storage" && values.yearly === "false"
-                ? "+$2/mo"
-                : null}
-              {addOn === "Customizable profile" && values.yearly === "true"
-                ? "+$20/yr"
-                : addOn === "Customizable profile" && values.yearly === "false"
-                ? "+$2/mo"
-                : null}
-            </p>
+        {!values.addOns && (
+          <div className="flex justify-between">
+            <p className="text-neutral-cool-gray">No add-ons selected</p>
           </div>
-        ))}
+        )}
+        {values.addOns &&
+          values.addOns?.map((addOn: string) => (
+            <div key={addOn} className="flex justify-between">
+              <p className="text-neutral-cool-gray">{addOn}</p>
+              <p className="text-neutral-cool-gray py-1">
+                {addOn === "Online service" && values.yearly === "true"
+                  ? "+$10/yr"
+                  : addOn === "Online service" && values.yearly === "false"
+                  ? "+$1/mo"
+                  : null}
+                {addOn === "Larger storage" && values.yearly === "true"
+                  ? "+$20/yr"
+                  : addOn === "Larger storage" && values.yearly === "false"
+                  ? "+$2/mo"
+                  : null}
+                {addOn === "Customizable profile" && values.yearly === "true"
+                  ? "+$20/yr"
+                  : addOn === "Customizable profile" &&
+                    values.yearly === "false"
+                  ? "+$2/mo"
+                  : null}
+              </p>
+            </div>
+          ))}
       </article>
       <article className="flex justify-between px-5 mt-5">
         <h2 className="text-neutral-cool-gray">
@@ -111,7 +122,7 @@ const FinishingUp = (values: FormInput) => {
           {values.yearly === "true" ? "yr" : "mo"}
         </p>
       </article>
-    </div>
+    </motion.div>
   );
 };
 

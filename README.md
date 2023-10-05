@@ -46,6 +46,7 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 - Style Form on Step 4 "Finishing Up". Add active states.
 - Style the "Thank you" page.
 - Setup and change colors.
+- Adding animations.
 
 ### Built with
 

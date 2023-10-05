@@ -1,6 +1,7 @@
 import { useGlobalContext } from "../context";
 import { ReactNode } from "react";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const Styles = styled.section`
   background-image: url("./assets/images/bg-sidebar-mobile.svg");
@@ -43,7 +44,13 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
     useGlobalContext()!;
 
   return (
-    <main className=" shadow-xl mb-5 md:bg-white md:rounded-xl md:overflow-hidden md:p-5 h-[100vh] md:h-[80vh] md:flex">
+    <motion.main
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="md:w-[50rem] lg:w-[60rem] xl:w-[70rem] shadow-xl mb-5 md:bg-white md:rounded-xl 
+      md:overflow-hidden md:p-5 h-[100vh] md:h-[80vh] md:flex "
+    >
       <Styles>
         <div className="md:flex gap-5 items-center justify-center">
           <Circle
@@ -122,7 +129,7 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
           </div>
         </div>
       </Styles>
-      <section className="md:flex md:flex-col justify-center">
+      <section className="md:flex md:flex-col justify-center items-center w-full">
         <section className="m-5 max-md:shadow-xl max-md:relative min-h-[50vh] bg-white overflow-hidden p-5 rounded-3xl bottom-[5.5rem]">
           {children}
         </section>
@@ -139,12 +146,12 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
               className="rounded p-3 text-white bg-primary-marine-blue"
               onClick={handleNextPage}
             >
-              Next Step
+              {page === 4 ? "Confirm" : "Next Step"}
             </button>
           </section>
         )}
       </section>
-    </main>
+    </motion.main>
   );
 };
 

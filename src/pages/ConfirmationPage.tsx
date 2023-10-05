@@ -1,6 +1,13 @@
+import { motion } from "framer-motion";
+
 const ConfirmationPage = () => {
   return (
-    <section className="text-center md:w-[30rem]">
+    <motion.section
+      initial={{ opacity: 0, scale: 0.5 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5 }}
+      className="text-center md:w-[30rem]"
+    >
       <img
         className="m-auto mt-10"
         src="assets/images/icon-thank-you.svg"
@@ -14,7 +21,7 @@ const ConfirmationPage = () => {
         platform. If you ever need support, please feel free to email us at
         support@loremgaming.com.
       </p>
-    </section>
+    </motion.section>
   );
 };
 
