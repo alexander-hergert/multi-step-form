@@ -58,18 +58,18 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
       </article>
       <div className="md:flex gap-5">
         <Label
-          className={values.plan === "arcade" ? " bg-slate-300 p-3" : "p-3"} //with TailwindCSS
-          $bordercolor={values.plan === "arcade" ? "purple" : ""} //with Styled Components props
+          className={values.plan === "Arcade" ? " bg-slate-300 p-3" : "p-3"} //with TailwindCSS
+          $bordercolor={values.plan === "Arcade" ? "purple" : ""} //with Styled Components props
         >
           <input
             className="hidden"
             type="radio"
-            value="arcade"
+            value="Arcade"
             {...register("plan")}
             defaultChecked
           />
           <div>
-            <img src="/assets/images/icon-arcade.svg" alt="arcade" />
+            <img src="/assets/images/icon-arcade.svg" alt="Arcade" />
           </div>
           <div>
             <h2 className="text-blue-900 font-bold">Arcade</h2>
@@ -86,18 +86,18 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
         </Label>
         <Label
           className={
-            values.plan === "advanced" ? " bg-slate-300 p-3 my-5" : " p-3 my-5"
+            values.plan === "Advanced" ? " bg-slate-300 p-3 my-5" : " p-3 my-5"
           }
-          $bordercolor={values.plan === "advanced" ? "purple" : ""}
+          $bordercolor={values.plan === "Advanced" ? "purple" : ""}
         >
           <input
             className="hidden"
             type="radio"
-            value="advanced"
+            value="Advanced"
             {...register("plan")}
           />
           <div>
-            <img src="/assets/images/icon-advanced.svg" alt="advanced" />
+            <img src="/assets/images/icon-advanced.svg" alt="Advanced" />
           </div>
           <div>
             <h2 className="text-blue-900 font-bold">Advanced</h2>
@@ -114,18 +114,18 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
         </Label>
         <Label
           className={
-            values.plan === "pro" ? " bg-slate-300 p-3 my-5" : "p-3 my-5"
+            values.plan === "Pro" ? " bg-slate-300 p-3 my-5" : "p-3 my-5"
           }
-          $bordercolor={values.plan === "pro" ? "purple" : ""}
+          $bordercolor={values.plan === "Pro" ? "purple" : ""}
         >
           <input
             className="hidden"
             type="radio"
-            value="pro"
+            value="Pro"
             {...register("plan")}
           />
           <div>
-            <img src="/assets/images/icon-pro.svg" alt="pro" />
+            <img src="/assets/images/icon-pro.svg" alt="Pro" />
           </div>
           <div>
             <h2 className="text-blue-900 font-bold">Pro</h2>

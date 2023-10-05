@@ -43,6 +43,7 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 - Style Form on Step 2 "Select your plan". Add active states.
 - Style Form on Step 3 "Pick Add Ons". Add active states.
 - Refactor Forms to use values from useForm.
+- Style Form on Step 4 "Finishing Up". Add active states.
 
 ### Built with
 
