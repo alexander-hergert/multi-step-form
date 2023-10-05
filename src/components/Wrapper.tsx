@@ -42,7 +42,7 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
   const { page, handlePrevPage, handleNextPage } = useGlobalContext()!;
 
   return (
-    <main className="md:bg-white md:rounded-xl md:overflow-hidden md:p-5 max-md:w-[100vw] max-md:min-h-[100vh] h-[100vh] md:h-[80vh] md:flex">
+    <main className="md:bg-white md:rounded-xl md:overflow-hidden md:p-5 max-md:min-h-[100vh] h-[100vh] md:h-[80vh] md:flex">
       <Styles>
         <div className="md:flex gap-5 items-center justify-center">
           <Circle
