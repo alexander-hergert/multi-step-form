@@ -18,7 +18,7 @@ const Styles = styled.section`
     display: flex;
     flex-direction: column;
     border-radius: 10px;
-    padding: 1rem;
+    padding: 3rem 2rem;
     justify-content: start;
     align-items: start;
     min-width: 20rem;
@@ -43,18 +43,22 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
     useGlobalContext()!;
 
   return (
-    <main className="md:bg-white md:rounded-xl md:overflow-hidden md:p-5 max-md:min-h-[100vh] h-[100vh] md:h-[80vh] md:flex">
+    <main className=" shadow-xl mb-5 md:bg-white md:rounded-xl md:overflow-hidden md:p-5 h-[100vh] md:h-[80vh] md:flex">
       <Styles>
         <div className="md:flex gap-5 items-center justify-center">
           <Circle
             className={
-              page === 1 ? "bg-blue-200" : "text-white border border-white"
+              page === 1
+                ? "bg-primary-light-blue"
+                : "text-white border border-white"
             }
           >
             1
           </Circle>
           <div>
-            <div className="max-md:hidden text-slate-500 uppercase">step 1</div>
+            <div className="max-md:hidden text-neutral-cool-gray uppercase">
+              step 1
+            </div>
             <div className="max-md:hidden font-bold text-white uppercase">
               your info
             </div>
@@ -63,13 +67,17 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
         <div className="md:flex gap-5 items-center justify-center">
           <Circle
             className={
-              page === 2 ? "bg-blue-200" : "text-white border border-white"
+              page === 2
+                ? "bg-primary-light-blue"
+                : "text-white border border-white"
             }
           >
             2
           </Circle>
           <div>
-            <div className="max-md:hidden text-slate-500 uppercase">step 2</div>
+            <div className="max-md:hidden text-neutral-cool-gray uppercase">
+              step 2
+            </div>
             <div className="max-md:hidden font-bold text-white uppercase">
               select plan
             </div>
@@ -78,13 +86,17 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
         <div className="md:flex gap-5 items-center justify-center">
           <Circle
             className={
-              page === 3 ? "bg-blue-200" : "text-white border border-white"
+              page === 3
+                ? "bg-primary-light-blue"
+                : "text-white border border-white"
             }
           >
             3
           </Circle>
           <div>
-            <div className="max-md:hidden text-slate-500 uppercase">step 3</div>
+            <div className="max-md:hidden text-neutral-cool-gray uppercase">
+              step 3
+            </div>
             <div className="max-md:hidden font-bold text-white uppercase">
               add-ons
             </div>
@@ -93,25 +105,29 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
         <div className="md:flex gap-5 items-center justify-center">
           <Circle
             className={
-              page === 4 ? "bg-blue-200" : "text-white border border-white"
+              page === 4
+                ? "bg-primary-light-blue"
+                : "text-white border border-white"
             }
           >
             4
           </Circle>
           <div>
-            <div className="max-md:hidden text-slate-500 uppercase">step 4</div>
+            <div className="max-md:hidden text-neutral-cool-gray uppercase">
+              step 4
+            </div>
             <div className="max-md:hidden font-bold text-white uppercase">
               summary
             </div>
           </div>
         </div>
       </Styles>
-      <section className="md:flex md:flex-col">
-        <section className="m-5 shadow max-md:relative min-h-[50vh] bg-white overflow-hidden p-5 rounded-3xl bottom-[5.5rem]">
+      <section className="md:flex md:flex-col justify-center">
+        <section className="m-5 max-md:shadow-xl max-md:relative min-h-[50vh] bg-white overflow-hidden p-5 rounded-3xl bottom-[5.5rem]">
           {children}
         </section>
         {!formReady && (
-          <section className="md:mt-20 p-5 w-full shadow flex bg-white justify-between">
+          <section className="md:mt-20 p-5 w-full flex bg-white justify-between">
             <GoBack
               disabled={page === 1}
               className={page === 1 ? "opacity-0" : ""}
@@ -120,7 +136,7 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
               Go Back
             </GoBack>
             <button
-              className="rounded p-3 text-white bg-blue-800"
+              className="rounded p-3 text-white bg-primary-marine-blue"
               onClick={handleNextPage}
             >
               Next Step

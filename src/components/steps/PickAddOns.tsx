@@ -4,9 +4,9 @@ import { useGlobalContext } from "../../context";
 
 const Label = styled.label<{ $bordercolor?: string }>`
   display: block;
-  border: 2px solid lightgray;
+  border: 2px solid hsl(229, 24%, 87%);
   border-radius: 10px;
-  border-color: ${(props) => props.$bordercolor || "lightgray"};
+  border-color: ${(props) => props.$bordercolor || "hsl(229, 24%, 87%)"};
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -20,7 +20,7 @@ const Input = styled.input`
   appearance: none;
   width: 1.5rem;
   height: 1.5rem;
-  border: 1px solid lightgray;
+  border: 1px solid hsl(229, 24%, 87%);
   border-radius: 4px;
   box-sizing: border-box;
 
@@ -29,7 +29,7 @@ const Input = styled.input`
     background-image: url("assets/images/icon-checkmark.svg");
     background-repeat: no-repeat;
     background-position: center;
-    background-color: darkblue;
+    background-color: hsl(243, 100%, 62%);
     position: absolute;
     border-width: 0;
     inset: 0;
@@ -46,20 +46,22 @@ const PickAddOns = ({ register, errors }: InfoProps) => {
   return (
     <div>
       <article>
-        <h1 className="text-2xl font-bold text-blue-900">Pick add-ons</h1>
-        <p className="my-3 text-slate-400">
+        <h1 className="text-4xl font-bold text-primary-marine-blue">
+          Pick add-ons
+        </h1>
+        <p className="my-3 text-neutral-cool-gray">
           Add-ons help enhance your gaming experience.
         </p>
       </article>
       <Label
         className={
           values.addOns && values.addOns?.includes("Online service")
-            ? " bg-slate-300 p-3"
+            ? " bg-neutral-magnolia p-3"
             : "p-3"
         }
         $bordercolor={
           values.addOns && values.addOns?.includes("Online service")
-            ? "purple"
+            ? "hsl(243, 100%, 62%)"
             : ""
         }
       >
@@ -70,22 +72,26 @@ const PickAddOns = ({ register, errors }: InfoProps) => {
             {...register("addOns")}
           />
           <div>
-            <p className="text-blue-900 font-bold">Online service</p>
+            <p className="text-primary-marine-blue font-bold">Online service</p>
             <p>Access to multiplayer games</p>
           </div>
         </div>
-        {values.yearly === "false" && <p className="text-violet-500">+$1/mo</p>}
-        {values.yearly === "true" && <p className="text-violet-500">+$10/yr</p>}
+        {values.yearly === "false" && (
+          <p className="text-primary-purplish-blue">+$1/mo</p>
+        )}
+        {values.yearly === "true" && (
+          <p className="text-primary-purplish-blue">+$10/yr</p>
+        )}
       </Label>
       <Label
         className={
           values.addOns && values.addOns?.includes("Larger storage")
-            ? " bg-slate-300 p-3 my-5"
+            ? " bg-neutral-magnolia p-3 my-5"
             : "p-3 my-5"
         }
         $bordercolor={
           values.addOns && values.addOns?.includes("Larger storage")
-            ? "purple"
+            ? "hsl(243, 100%, 62%)"
             : ""
         }
       >
@@ -96,22 +102,26 @@ const PickAddOns = ({ register, errors }: InfoProps) => {
             {...register("addOns")}
           />
           <div>
-            <p className="text-blue-900 font-bold">Larger storage</p>
+            <p className="text-primary-marine-blue font-bold">Larger storage</p>
             <p>Extra 1TB of cloud save</p>
           </div>
         </div>
-        {values.yearly === "false" && <p className="text-violet-500">+$2/mo</p>}
-        {values.yearly === "true" && <p className="text-violet-500">+$20/yr</p>}
+        {values.yearly === "false" && (
+          <p className="text-primary-purplish-blue">+$2/mo</p>
+        )}
+        {values.yearly === "true" && (
+          <p className="text-primary-purplish-blue">+$20/yr</p>
+        )}
       </Label>
       <Label
         className={
           values.addOns && values.addOns?.includes("Customizable profile")
-            ? " bg-slate-300 p-3"
+            ? " bg-neutral-magnolia p-3"
             : "p-3"
         }
         $bordercolor={
           values.addOns && values.addOns?.includes("Customizable profile")
-            ? "purple"
+            ? "hsl(243, 100%, 62%)"
             : ""
         }
       >
@@ -122,12 +132,18 @@ const PickAddOns = ({ register, errors }: InfoProps) => {
             {...register("addOns")}
           />
           <div>
-            <p className="text-blue-900 font-bold">Customizable profile</p>
+            <p className="text-primary-marine-blue font-bold">
+              Customizable profile
+            </p>
             <p>Custom theme on your profile</p>
           </div>
         </div>
-        {values.yearly === "false" && <p className="text-violet-500">+$2/mo</p>}
-        {values.yearly === "true" && <p className="text-violet-500">+$20/yr</p>}
+        {values.yearly === "false" && (
+          <p className="text-primary-purplish-blue">+$2/mo</p>
+        )}
+        {values.yearly === "true" && (
+          <p className="text-primary-purplish-blue">+$20/yr</p>
+        )}
       </Label>
     </div>
   );

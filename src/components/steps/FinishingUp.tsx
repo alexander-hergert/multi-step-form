@@ -41,25 +41,27 @@ const FinishingUp = (values: FormInput) => {
   return (
     <div>
       <article>
-        <h1 className="text-2xl font-bold text-blue-900">Finishing up</h1>
-        <p className="my-3 text-slate-400">
+        <h1 className="text-4xl font-bold text-primary-marine-blue">
+          Finishing up
+        </h1>
+        <p className="my-3 text-neutral-cool-gray">
           Double-check everything looks OK before confirming.
         </p>
       </article>
-      <article className="bg-slate-200 rounded-xl p-5">
-        <div className="mb-3 flex justify-between items-center border-b w-full border-slate-400 pb-3">
+      <article className="bg-neutral-magnolia rounded-xl p-5">
+        <div className="mb-3 flex justify-between items-center border-b w-full border-neutral-light-gray pb-3">
           <div>
-            <h2>
-              {values.plan} ({values.yearly ? "Yearly" : "Monthly"})
+            <h2 className="font-bold text-primary-marine-blue">
+              {values.plan} ({values.yearly === "true" ? "Yearly" : "Monthly"})
             </h2>
             <p
               onClick={() => setPage(2)}
-              className="cursor-pointer text-slate-500 underline"
+              className="cursor-pointer text-neutral-cool-gray underline"
             >
               Change
             </p>
           </div>
-          <p className="font-bold text-blue-900">
+          <p className="font-bold text-primary-marine-blue">
             {values.plan === "Arcade" && values.yearly === "true"
               ? "$90/yr"
               : values.plan === "Arcade" && values.yearly === "false"
@@ -79,8 +81,8 @@ const FinishingUp = (values: FormInput) => {
         </div>
         {values.addOns?.map((addOn: string) => (
           <div key={addOn} className="flex justify-between">
-            <p className="text-slate-500">{addOn}</p>
-            <p className="text-slate-600 py-1">
+            <p className="text-neutral-cool-gray">{addOn}</p>
+            <p className="text-neutral-cool-gray py-1">
               {addOn === "Online service" && values.yearly === "true"
                 ? "+$10/yr"
                 : addOn === "Online service" && values.yearly === "false"
@@ -101,11 +103,11 @@ const FinishingUp = (values: FormInput) => {
         ))}
       </article>
       <article className="flex justify-between px-5 mt-5">
-        <h2 className="text-slate-500">
+        <h2 className="text-neutral-cool-gray">
           Total (per {values.yearly === "true" ? "year" : "month"})
         </h2>
-        <p className="font-bold text-blue-900">
-          ${values.yearly === "true" ? total * 10 : total}/
+        <p className="font-bold text-primary-purplish-blue">
+          +${values.yearly === "true" ? total * 10 : total}/
           {values.yearly === "true" ? "yr" : "mo"}
         </p>
       </article>

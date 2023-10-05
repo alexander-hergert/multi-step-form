@@ -45,6 +45,7 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 - Refactor Forms to use values from useForm.
 - Style Form on Step 4 "Finishing Up". Add active states.
 - Style the "Thank you" page.
+- Setup and change colors.
 
 ### Built with
 

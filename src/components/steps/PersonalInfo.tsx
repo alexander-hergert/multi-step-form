@@ -6,8 +6,8 @@ const Input = styled.input<{ $bordercolor?: string }>`
   width: 100%;
   padding: 0.5rem;
   border-radius: 5px;
-  outline-color: purple;
-  border-color: ${(props) => props.$bordercolor || "lightgray"};
+  outline-color: hsl(213, 96%, 18%);
+  border-color: ${(props) => props.$bordercolor || "hsl(231, 11%, 63%)"};
 
   &:hover {
     cursor: pointer;
@@ -18,28 +18,30 @@ const PersonalInfo = ({ register, errors }: InfoProps) => {
   return (
     <div>
       <article>
-        <h1 className="text-2xl font-bold text-blue-900">Personal info</h1>
-        <p className="my-3 text-slate-400">
+        <h1 className="text-4xl font-bold text-primary-marine-blue">
+          Personal info
+        </h1>
+        <p className="my-3 text-neutral-cool-gray">
           Please provide your name, email address, and phone number.
         </p>
       </article>
       <div className="flex justify-between mt-3">
-        <label htmlFor="name" className="block text-blue-900">
+        <label htmlFor="name" className="block text-primary-marine-blue">
           Name
         </label>
         {errors.name?.type === "required" && (
-          <p className="text-red-500 font-bold" role="alert">
+          <p className="text-primary-strawberry-red font-bold" role="alert">
             This field is required
           </p>
         )}
         {errors.name?.type === "pattern" && (
-          <p className="text-red-500 font-bold" role="alert">
+          <p className="text-primary-strawberry-red font-bold" role="alert">
             Please enter firstname and lastname.
           </p>
         )}
       </div>
       <Input
-        $bordercolor={errors.name ? "red" : ""} //using props this time
+        $bordercolor={errors.name ? "hsl(354, 84%, 57%)" : ""} //using props this time
         id="name"
         defaultValue=""
         placeholder="e.g. Stephen King"
@@ -50,22 +52,22 @@ const PersonalInfo = ({ register, errors }: InfoProps) => {
         aria-invalid={errors.name ? "true" : "false"}
       />
       <div className="flex justify-between mt-3">
-        <label htmlFor="email" className="block text-blue-900">
+        <label htmlFor="email" className="block text-primary-marine-blue">
           Email Address
         </label>
         {errors.email?.type === "required" && (
-          <p className="text-red-500 font-bold" role="alert">
+          <p className="text-primary-strawberry-red font-bold" role="alert">
             This field is required
           </p>
         )}
         {errors.email?.type === "pattern" && (
-          <p className="text-red-500 font-bold" role="alert">
+          <p className="text-primary-strawberry-red font-bold" role="alert">
             Does not match an email
           </p>
         )}
       </div>
       <Input
-        $bordercolor={errors.email ? "red" : ""}
+        $bordercolor={errors.email ? "hsl(354, 84%, 57%)" : ""}
         id="email"
         defaultValue=""
         placeholder="e.g. stephenking@lorem.com"
@@ -76,22 +78,22 @@ const PersonalInfo = ({ register, errors }: InfoProps) => {
         aria-invalid={errors.email ? "true" : "false"}
       />
       <div className="flex justify-between mt-3">
-        <label htmlFor="phone" className="block text-blue-900">
+        <label htmlFor="phone" className="block text-primary-marine-blue">
           Phone Number
         </label>
         {errors.phone?.type === "required" && (
-          <p className="text-red-500 font-bold" role="alert">
+          <p className="text-primary-strawberry-red font-bold" role="alert">
             This field is required
           </p>
         )}
         {errors.phone?.type === "pattern" && (
-          <p className="text-red-500 font-bold" role="alert">
+          <p className="text-primary-strawberry-red font-bold" role="alert">
             Does not match a phonenumber
           </p>
         )}
       </div>
       <Input
-        $bordercolor={errors.phone ? "red" : ""}
+        $bordercolor={errors.phone ? "hsl(354, 84%, 57%)" : ""}
         id="phone"
         defaultValue=""
         maxLength={10}
