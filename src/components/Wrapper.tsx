@@ -39,7 +39,8 @@ const GoBack = styled.button`
 `;
 
 const Wrapper = ({ children }: { children: ReactNode }) => {
-  const { page, handlePrevPage, handleNextPage } = useGlobalContext()!;
+  const { formReady, page, handlePrevPage, handleNextPage } =
+    useGlobalContext()!;
 
   return (
     <main className="md:bg-white md:rounded-xl md:overflow-hidden md:p-5 max-md:min-h-[100vh] h-[100vh] md:h-[80vh] md:flex">
@@ -109,21 +110,23 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
         <section className="m-5 shadow max-md:relative min-h-[50vh] bg-white overflow-hidden p-5 rounded-3xl bottom-[5.5rem]">
           {children}
         </section>
-        <section className="md:mt-20 p-5 w-full shadow flex bg-white justify-between">
-          <GoBack
-            disabled={page === 1}
-            className={page === 1 ? "opacity-0" : ""}
-            onClick={handlePrevPage}
-          >
-            Go Back
-          </GoBack>
-          <button
-            className="rounded p-3 text-white bg-blue-800"
-            onClick={handleNextPage}
-          >
-            Next Step
-          </button>
-        </section>
+        {!formReady && (
+          <section className="md:mt-20 p-5 w-full shadow flex bg-white justify-between">
+            <GoBack
+              disabled={page === 1}
+              className={page === 1 ? "opacity-0" : ""}
+              onClick={handlePrevPage}
+            >
+              Go Back
+            </GoBack>
+            <button
+              className="rounded p-3 text-white bg-blue-800"
+              onClick={handleNextPage}
+            >
+              Next Step
+            </button>
+          </section>
+        )}
       </section>
     </main>
   );
