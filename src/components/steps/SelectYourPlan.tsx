@@ -21,8 +21,12 @@ const Label = styled.label<{ $bordercolor?: string }>`
     flex-direction: column;
     justify-content: space-between;
     width: 8rem;
-    height: 10rem;
+    height: 12rem;
     margin: 0;
+  }
+
+  @media screen and (min-width: 1024px) {
+    width: 10rem;
   }
 `;
 
@@ -66,7 +70,9 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
       <div className="md:flex gap-5">
         <Label
           className={
-            values.plan === "Arcade" ? " bg-neutral-magnolia p-3" : "p-3"
+            values.plan === "Arcade"
+              ? " bg-neutral-magnolia p-3 gap-5"
+              : "p-3 gap-5"
           } //with TailwindCSS
           $bordercolor={values.plan === "Arcade" ? "hsl(243, 100%, 62%)" : ""} //with Styled Components props
         >
@@ -75,29 +81,33 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
             type="radio"
             value="Arcade"
             {...register("plan")}
-            defaultChecked
+            defaultChecked={!values.plan ? true : values.plan === "Arcade"}
           />
-          <div>
-            <img src="/assets/images/icon-arcade.svg" alt="Arcade" />
-          </div>
+          <img
+            className="w-[3rem]"
+            src="/assets/images/icon-arcade.svg"
+            alt="Arcade"
+          />
           <div>
             <h2 className="text-primary-marine-blue font-bold">Arcade</h2>
             {values.yearly === "false" && (
               <p className="text-neutral-cool-gray">$9/mo</p>
             )}
             {values.yearly === "true" && (
-              <p className="text-neutral-cool-gray">$90/yr</p>
+              <p className="text-neutral-cool-gray text-base">$90/yr</p>
             )}
             {values.yearly === "true" && (
-              <p className="text-primary-marine-blue">2 months free</p>
+              <p className="text-primary-marine-blue text-base">
+                2 months free
+              </p>
             )}
           </div>
         </Label>
         <Label
           className={
             values.plan === "Advanced"
-              ? " bg-neutral-magnolia p-3 my-5"
-              : " p-3 my-5"
+              ? " bg-neutral-magnolia p-3 my-5 gap-5"
+              : " p-3 my-5 gap-5"
           }
           $bordercolor={values.plan === "Advanced" ? "hsl(243, 100%, 62%)" : ""}
         >
@@ -108,7 +118,11 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
             {...register("plan")}
           />
           <div>
-            <img src="/assets/images/icon-advanced.svg" alt="Advanced" />
+            <img
+              className="w-[3rem]"
+              src="/assets/images/icon-advanced.svg"
+              alt="Advanced"
+            />
           </div>
           <div>
             <h2 className="text-primary-marine-blue font-bold">Advanced</h2>
@@ -116,16 +130,20 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
               <p className="text-neutral-cool-gray">$12/mo</p>
             )}
             {values.yearly === "true" && (
-              <p className="text-neutral-cool-gray">$120/yr</p>
+              <p className="text-neutral-cool-gray text-base">$120/yr</p>
             )}
             {values.yearly === "true" && (
-              <p className="text-primary-marine-blue">2 months free</p>
+              <p className="text-primary-marine-blue text-base">
+                2 months free
+              </p>
             )}
           </div>
         </Label>
         <Label
           className={
-            values.plan === "Pro" ? " bg-neutral-magnolia p-3 my-5" : "p-3 my-5"
+            values.plan === "Pro"
+              ? " bg-neutral-magnolia p-3 my-5 gap-5"
+              : "p-3 my-5 gap-5"
           }
           $bordercolor={values.plan === "Pro" ? "hsl(243, 100%, 62%)" : ""}
         >
@@ -136,7 +154,11 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
             {...register("plan")}
           />
           <div>
-            <img src="/assets/images/icon-pro.svg" alt="Pro" />
+            <img
+              className="w-[3rem]"
+              src="/assets/images/icon-pro.svg"
+              alt="Pro"
+            />
           </div>
           <div>
             <h2 className="text-primary-marine-blue font-bold">Pro</h2>
@@ -144,10 +166,12 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
               <p className="text-neutral-cool-gray">Pro $15/mo</p>
             )}
             {values.yearly === "true" && (
-              <p className="text-neutral-cool-gray">$150/yr</p>
+              <p className="text-neutral-cool-gray text-base">$150/yr</p>
             )}
             {values.yearly === "true" && (
-              <p className="text-primary-marine-blue">2 months free</p>
+              <p className="text-primary-marine-blue text-base">
+                2 months free
+              </p>
             )}
           </div>
         </Label>

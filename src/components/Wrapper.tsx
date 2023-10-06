@@ -22,12 +22,16 @@ const Styles = styled.section`
     padding: 3rem 2rem;
     justify-content: start;
     align-items: start;
+    min-width: 15rem;
+  }
+
+  @media screen and (min-width: 1024px) {
     min-width: 20rem;
   }
 `;
 
 const Circle = styled.div`
-  width: 3rem;
+  min-width: 3rem;
   height: 3rem;
   border-radius: 50%;
   display: grid;
@@ -35,7 +39,6 @@ const Circle = styled.div`
 `;
 
 const GoBack = styled.button`
-  padding: 0.75rem;
   color: gray;
 `;
 
@@ -48,7 +51,7 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
       initial={{ opacity: 0, scale: 0.5 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
-      className="md:w-[50rem] lg:w-[60rem] xl:w-[70rem] shadow-xl mb-5 md:bg-white md:rounded-xl 
+      className="md:w-[48rem] lg:w-[60rem] xl:w-[70rem] shadow-xl mb-5 md:bg-white md:rounded-xl 
       md:overflow-hidden md:p-5 h-[100vh] md:h-[80vh] md:flex "
     >
       <Styles>
@@ -130,11 +133,17 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
         </div>
       </Styles>
       <section className="md:flex md:flex-col justify-center items-center w-full">
-        <section className="m-5 max-md:shadow-xl max-md:relative min-h-[50vh] bg-white overflow-hidden p-5 rounded-3xl bottom-[5.5rem]">
+        <section
+          className="m-5 max-md:shadow-xl max-md:relative min-h-[60vh]
+         bg-white overflow-hidden p-5 rounded-3xl bottom-[5.5rem]"
+        >
           {children}
         </section>
         {!formReady && (
-          <section className="md:mt-20 p-5 w-full flex bg-white justify-between">
+          <section
+            className="md:mt-4 max-md:fixed bottom-0 p-5 w-full flex bg-white
+           justify-between md:px-10 xl:px-32"
+          >
             <GoBack
               disabled={page === 1}
               className={page === 1 ? "opacity-0" : ""}
@@ -143,7 +152,7 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
               Go Back
             </GoBack>
             <button
-              className="rounded p-3 text-white bg-primary-marine-blue"
+              className="rounded p-3 text-white bg-primary-marine-blue w-[8rem]"
               onClick={handleNextPage}
             >
               {page === 4 ? "Confirm" : "Next Step"}

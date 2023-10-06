@@ -1,7 +1,6 @@
 import { InfoProps } from "../../types";
 import styled from "styled-components";
 
-
 const Input = styled.input<{ $bordercolor?: string }>`
   border: 1px solid lightgray;
   width: 100%;

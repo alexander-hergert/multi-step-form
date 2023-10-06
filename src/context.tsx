@@ -39,7 +39,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     handleSubmit(
       (data) => {
         // Handle successful submission
-        console.log(data);
 
         if (Object.keys(errors).length === 0) {
           if (page < 4) {
