@@ -2,6 +2,7 @@ import { useGlobalContext } from "../context";
 import { ReactNode } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import Step from "./Step";
 
 const Styles = styled.section`
   background-image: url("./assets/images/bg-sidebar-mobile.svg");
@@ -30,16 +31,13 @@ const Styles = styled.section`
   }
 `;
 
-const Circle = styled.div`
-  min-width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  display: grid;
-  place-items: center;
-`;
-
 const GoBack = styled.button`
   color: gray;
+
+  &:hover {
+    color: hsl(213, 96%, 18%);
+    font-weight: bold;
+  }
 `;
 
 const Wrapper = ({ children }: { children: ReactNode }) => {
@@ -55,87 +53,14 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
       md:overflow-hidden md:p-5 h-[100vh] md:h-[80vh] md:flex "
     >
       <Styles>
-        <div className="md:flex gap-5 items-center justify-center">
-          <Circle
-            className={
-              page === 1
-                ? "bg-primary-light-blue"
-                : "text-white border border-white"
-            }
-          >
-            1
-          </Circle>
-          <div>
-            <div className="max-md:hidden text-neutral-cool-gray uppercase">
-              step 1
-            </div>
-            <div className="max-md:hidden font-bold text-white uppercase">
-              your info
-            </div>
-          </div>
-        </div>
-        <div className="md:flex gap-5 items-center justify-center">
-          <Circle
-            className={
-              page === 2
-                ? "bg-primary-light-blue"
-                : "text-white border border-white"
-            }
-          >
-            2
-          </Circle>
-          <div>
-            <div className="max-md:hidden text-neutral-cool-gray uppercase">
-              step 2
-            </div>
-            <div className="max-md:hidden font-bold text-white uppercase">
-              select plan
-            </div>
-          </div>
-        </div>
-        <div className="md:flex gap-5 items-center justify-center">
-          <Circle
-            className={
-              page === 3
-                ? "bg-primary-light-blue"
-                : "text-white border border-white"
-            }
-          >
-            3
-          </Circle>
-          <div>
-            <div className="max-md:hidden text-neutral-cool-gray uppercase">
-              step 3
-            </div>
-            <div className="max-md:hidden font-bold text-white uppercase">
-              add-ons
-            </div>
-          </div>
-        </div>
-        <div className="md:flex gap-5 items-center justify-center">
-          <Circle
-            className={
-              page === 4
-                ? "bg-primary-light-blue"
-                : "text-white border border-white"
-            }
-          >
-            4
-          </Circle>
-          <div>
-            <div className="max-md:hidden text-neutral-cool-gray uppercase">
-              step 4
-            </div>
-            <div className="max-md:hidden font-bold text-white uppercase">
-              summary
-            </div>
-          </div>
-        </div>
+        {[1, 2, 3, 4].map((item) => (
+          <Step key={item} step={item} />
+        ))}
       </Styles>
       <section className="md:flex md:flex-col justify-center items-center w-full">
         <section
           className="m-5 max-md:shadow-xl max-md:relative min-h-[60vh]
-         bg-white overflow-hidden p-5 rounded-3xl bottom-[5.5rem]"
+         bg-white overflow-hidden p-5 rounded-3xl bottom-[5.5rem] md:min-w-[30rem] lg:min-w-[35rem]"
         >
           {children}
         </section>
@@ -152,7 +77,8 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
               Go Back
             </GoBack>
             <button
-              className="rounded p-3 text-white bg-primary-marine-blue w-[8rem]"
+              className={`rounded p-3 text-white bg-primary-marine-blue w-[8rem]
+             ${page === 4 ? "hover:bg-violet-400" : "hover:bg-blue-800"}`}
               onClick={handleNextPage}
             >
               {page === 4 ? "Confirm" : "Next Step"}

@@ -1,6 +1,6 @@
 # Frontend Mentor - Multi-step form
 
-![Design preview for the Multi-step form coding challenge](./design/desktop-preview.jpg)
+![Design preview for the Multi-step form coding challenge](/public/assets/design/desktop-preview.jpg)
 
 ## Welcome! 👋
 
@@ -47,8 +47,11 @@ Want some support on the challenge? [Join our Slack community](https://www.front
 - Style the "Thank you" page.
 - Setup and change colors.
 - Adding animations.
+- Add active styles. Clean unnecessary files. Refactoring into smaller components. Fix typescript issues. Adding fonts.
 
 ### Built with
 
-- [React](https://reactjs.org/) - JS library
-- [Styled Components](https://styled-components.com/) - For styles
+- [React](https://reactjs.org/) - JS library to create dynamic SPA.
+- [Styled-Components](https://styled-components.com/) - For styles in the component.
+- [React-Hook-Form](https://react-hook-form.com/) - Track and manage state of Forms. Validation and error handling.
+- [React-Router](https://reactrouter.com/en/main/start/overview) - For routing in SPA and also many features for routes.

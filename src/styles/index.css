@@ -1,9 +1,23 @@
 @font-face {
   font-family: "Ubuntu";
-  src: url("/assets/fonts/Ubuntu-Bold.ttf") format("truetype"),
-    url("/assets/fonts/Ubuntu-Medium.ttf") format("truetype"),
-    url("/assets/fonts/Ubuntu-Regular.ttf") format("truetype");
+  src: url("/assets/fonts/Ubuntu-Regular.ttf") format("truetype");
   font-weight: normal;
+  font-style: normal;
+}
+
+/* Ubuntu Medium - Weight: 600 */
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/assets/fonts/Ubuntu-Medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+
+/* Ubuntu Bold - Weight: bold */
+@font-face {
+  font-family: "Ubuntu";
+  src: url("/assets/fonts/Ubuntu-Bold.ttf") format("truetype");
+  font-weight: bold;
   font-style: normal;
 }
 
@@ -15,20 +29,6 @@
   box-sizing: border-box;
 }
 
-:root {
-  --primary-marine-blue: hsl(213, 96%, 18%);
-  --primary-purplish-blue: hsl(243, 100%, 62%);
-  --primary-pastel-blue: hsl(228, 100%, 84%);
-  --primary-light-blue: hsl(206, 94%, 87%);
-  --primary-strawberry-red: hsl(354, 84%, 57%);
-
-  --neutral-cool-gray: hsl(231, 11%, 63%);
-  --neutral-light-gray: hsl(229, 24%, 87%);
-  --neutral-magnolia: hsl(217, 100%, 97%);
-  --neutral-alabaster: hsl(231, 100%, 99%);
-  --neutral-white: hsl(0, 0%, 100%);
-}
-
 body {
   min-height: 100vh;
   font-family: "Ubuntu", sans-serif;
@@ -37,11 +37,17 @@ body {
 }
 
 /* DESKTOP DESIGN */
+@media only screen and (min-width: 375px) {
+  body {
+    font-size: 14px;
+  }
+}
+
+/* DESKTOP DESIGN */
 @media only screen and (min-width: 768px) {
   body {
     display: grid;
     place-items: center;
-
   }
 }
 

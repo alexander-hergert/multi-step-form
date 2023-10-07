@@ -2,9 +2,10 @@ import { useGlobalContext } from "../../context";
 import { FormInput } from "../../types";
 import { motion } from "framer-motion";
 import { fadeRight } from "../../animations";
+import Loader from "../Loader";
 
 const FinishingUp = (values: FormInput) => {
-  const { setPage } = useGlobalContext()!;
+  const { formReady, setPage } = useGlobalContext()!;
 
   //using total to evaluate the total price
   let total: number = 0;
@@ -19,6 +20,10 @@ const FinishingUp = (values: FormInput) => {
       total = 15;
       break;
     default:
+  }
+
+  if (formReady) {
+    return <Loader />;
   }
 
   if (values.addOns && Array.isArray(values.addOns)) {
@@ -45,7 +50,7 @@ const FinishingUp = (values: FormInput) => {
       transition={{ duration: 0.5 }}
     >
       <article>
-        <h1 className="text-4xl font-bold text-primary-marine-blue">
+        <h1 className="max-md:text-2xl md:text-4xl font-bold text-primary-marine-blue">
           Finishing up
         </h1>
         <p className="my-3 text-neutral-cool-gray">
@@ -60,7 +65,8 @@ const FinishingUp = (values: FormInput) => {
             </h2>
             <p
               onClick={() => setPage(2)}
-              className="cursor-pointer text-neutral-cool-gray underline"
+              className="cursor-pointer text-neutral-cool-gray underline
+              hover:text-primary-purplish-blue"
             >
               Change
             </p>
@@ -83,12 +89,12 @@ const FinishingUp = (values: FormInput) => {
               : null}
           </p>
         </div>
-        {!values.addOns && (
+        {(!Array.isArray(values.addOns) || values.addOns.length === 0) && (
           <div className="flex justify-between">
             <p className="text-neutral-cool-gray">No add-ons selected</p>
           </div>
         )}
-        {values.addOns &&
+        {Array.isArray(values.addOns) &&
           values.addOns?.map((addOn: string) => (
             <div key={addOn} className="flex justify-between">
               <p className="text-neutral-cool-gray">{addOn}</p>

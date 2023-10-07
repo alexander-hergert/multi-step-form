@@ -38,8 +38,6 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
   const handleNextPage = (): void => {
     handleSubmit(
       (data) => {
-        // Handle successful submission
-
         if (Object.keys(errors).length === 0) {
           if (page < 4) {
             setPage((prev) => prev + 1);
@@ -60,6 +58,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
                 }
               })
               .catch((error) => {
+                navigate("/error");
                 console.error("Error:", error);
               });
           }

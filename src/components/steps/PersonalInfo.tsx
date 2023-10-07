@@ -4,10 +4,10 @@ import styled from "styled-components";
 const Input = styled.input<{ $bordercolor?: string }>`
   border: 1px solid lightgray;
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.75rem;
   border-radius: 5px;
   outline-color: hsl(213, 96%, 18%);
-  border-color: ${(props) => props.$bordercolor || "hsl(231, 11%, 63%)"};
+  border-color: ${(props) => props.$bordercolor || "hsl(229, 24%, 87%)"};
 
   &:hover {
     cursor: pointer;
@@ -18,7 +18,7 @@ const PersonalInfo = ({ register, errors }: InfoProps) => {
   return (
     <div>
       <article>
-        <h1 className="text-4xl font-bold text-primary-marine-blue">
+        <h1 className="max-md:text-2xl md:text-4xl font-bold text-primary-marine-blue">
           Personal info
         </h1>
         <p className="my-3 text-neutral-cool-gray">

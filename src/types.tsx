@@ -13,3 +13,17 @@ export interface InfoProps {
   register: UseFormRegister<FormInput>;
   errors: FieldErrors<FormInput>;
 }
+
+export interface Option {
+  plan: string;
+  src: string;
+  monthly: string;
+  yearly: string;
+}
+
+export interface AddOn {
+  addOn: string;
+  description: string;
+  monthly: string;
+  yearly: string;
+}

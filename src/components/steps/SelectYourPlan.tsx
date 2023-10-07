@@ -1,34 +1,9 @@
-import { InfoProps } from "../../types";
+import { InfoProps, Option, FormInput } from "../../types";
 import styled from "styled-components";
 import { useGlobalContext } from "../../context";
 import { motion } from "framer-motion";
 import { fadeRight } from "../../animations";
-
-const Label = styled.label<{ $bordercolor?: string }>`
-  display: block;
-  border: 2px solid hsl(229, 24%, 87%);
-  border-radius: 10px;
-  border-color: ${(props) => props.$bordercolor || "hsl(229, 24%, 87%)"};
-  cursor: pointer;
-
-  @media screen and (max-width: 768px) {
-    display: flex;
-    align-items: center;
-    gap: 1.25rem;
-  }
-  @media screen and (min-width: 768px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 8rem;
-    height: 12rem;
-    margin: 0;
-  }
-
-  @media screen and (min-width: 1024px) {
-    width: 10rem;
-  }
-`;
+import Options from "./Options";
 
 const Input = styled.input`
   cursor: pointer;
@@ -51,7 +26,28 @@ const Input = styled.input`
 
 const SelectYourPlan = ({ register, errors }: InfoProps) => {
   const { watch } = useGlobalContext()!;
-  const values = watch();
+  const values: FormInput = watch();
+
+  const options: Option[] = [
+    {
+      plan: "Arcade",
+      src: "/assets/images/icon-arcade.svg",
+      monthly: "$9/mo",
+      yearly: "$90/yr",
+    },
+    {
+      plan: "Advanced",
+      src: "/assets/images/icon-advanced.svg",
+      monthly: "$12/mo",
+      yearly: "$120/yr",
+    },
+    {
+      plan: "Pro",
+      src: "/assets/images/icon-pro.svg",
+      monthly: "$15/mo",
+      yearly: "$150/yr",
+    },
+  ];
 
   return (
     <motion.div
@@ -60,7 +56,7 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
       transition={{ duration: 0.5 }}
     >
       <article>
-        <h1 className="text-4xl font-bold text-primary-marine-blue">
+        <h1 className="max-md:text-2xl md:text-4xl font-bold text-primary-marine-blue">
           Select your plan
         </h1>
         <p className="my-3 text-neutral-cool-gray">
@@ -68,113 +64,14 @@ const SelectYourPlan = ({ register, errors }: InfoProps) => {
         </p>
       </article>
       <div className="md:flex gap-5">
-        <Label
-          className={
-            values.plan === "Arcade"
-              ? " bg-neutral-magnolia p-3 gap-5"
-              : "p-3 gap-5"
-          } //with TailwindCSS
-          $bordercolor={values.plan === "Arcade" ? "hsl(243, 100%, 62%)" : ""} //with Styled Components props
-        >
-          <input
-            className="hidden"
-            type="radio"
-            value="Arcade"
-            {...register("plan")}
-            defaultChecked={!values.plan ? true : values.plan === "Arcade"}
+        {options.map((item) => (
+          <Options
+            key={item.plan}
+            register={register}
+            values={values}
+            item={item}
           />
-          <img
-            className="w-[3rem]"
-            src="/assets/images/icon-arcade.svg"
-            alt="Arcade"
-          />
-          <div>
-            <h2 className="text-primary-marine-blue font-bold">Arcade</h2>
-            {values.yearly === "false" && (
-              <p className="text-neutral-cool-gray">$9/mo</p>
-            )}
-            {values.yearly === "true" && (
-              <p className="text-neutral-cool-gray text-base">$90/yr</p>
-            )}
-            {values.yearly === "true" && (
-              <p className="text-primary-marine-blue text-base">
-                2 months free
-              </p>
-            )}
-          </div>
-        </Label>
-        <Label
-          className={
-            values.plan === "Advanced"
-              ? " bg-neutral-magnolia p-3 my-5 gap-5"
-              : " p-3 my-5 gap-5"
-          }
-          $bordercolor={values.plan === "Advanced" ? "hsl(243, 100%, 62%)" : ""}
-        >
-          <input
-            className="hidden"
-            type="radio"
-            value="Advanced"
-            {...register("plan")}
-          />
-          <div>
-            <img
-              className="w-[3rem]"
-              src="/assets/images/icon-advanced.svg"
-              alt="Advanced"
-            />
-          </div>
-          <div>
-            <h2 className="text-primary-marine-blue font-bold">Advanced</h2>
-            {values.yearly === "false" && (
-              <p className="text-neutral-cool-gray">$12/mo</p>
-            )}
-            {values.yearly === "true" && (
-              <p className="text-neutral-cool-gray text-base">$120/yr</p>
-            )}
-            {values.yearly === "true" && (
-              <p className="text-primary-marine-blue text-base">
-                2 months free
-              </p>
-            )}
-          </div>
-        </Label>
-        <Label
-          className={
-            values.plan === "Pro"
-              ? " bg-neutral-magnolia p-3 my-5 gap-5"
-              : "p-3 my-5 gap-5"
-          }
-          $bordercolor={values.plan === "Pro" ? "hsl(243, 100%, 62%)" : ""}
-        >
-          <input
-            className="hidden"
-            type="radio"
-            value="Pro"
-            {...register("plan")}
-          />
-          <div>
-            <img
-              className="w-[3rem]"
-              src="/assets/images/icon-pro.svg"
-              alt="Pro"
-            />
-          </div>
-          <div>
-            <h2 className="text-primary-marine-blue font-bold">Pro</h2>
-            {values.yearly === "false" && (
-              <p className="text-neutral-cool-gray">Pro $15/mo</p>
-            )}
-            {values.yearly === "true" && (
-              <p className="text-neutral-cool-gray text-base">$150/yr</p>
-            )}
-            {values.yearly === "true" && (
-              <p className="text-primary-marine-blue text-base">
-                2 months free
-              </p>
-            )}
-          </div>
-        </Label>
+        ))}
       </div>
       <div className="md:mt-10 bg-neutral-magnolia rounded-lg py-3 flex justify-center items-center gap-5">
         <label
