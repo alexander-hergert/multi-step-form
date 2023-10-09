@@ -88,7 +88,7 @@ const PersonalInfo = ({ register, errors }: InfoProps) => {
         )}
         {errors.phone?.type === "pattern" && (
           <p className="text-primary-strawberry-red font-bold" role="alert">
-            Does not match a phonenumber
+            Does not match a phonenumber.
           </p>
         )}
       </div>
@@ -96,11 +96,10 @@ const PersonalInfo = ({ register, errors }: InfoProps) => {
         $bordercolor={errors.phone ? "hsl(354, 84%, 57%)" : ""}
         id="phone"
         defaultValue=""
-        maxLength={10}
         placeholder="e.g. +1 234 567 890"
         {...register("phone", {
           required: true,
-          pattern: /^\d{10}$/,
+          pattern: /^\+(?:[0-9] ?){9,14}[0-9]$/,
         })}
         aria-invalid={errors.phone ? "true" : "false"}
       />

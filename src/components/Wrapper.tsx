@@ -44,6 +44,13 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
   const { formReady, page, handlePrevPage, handleNextPage } =
     useGlobalContext()!;
 
+  const data = [
+    { step: 1, info: "your info" },
+    { step: 2, info: "select a plan" },
+    { step: 3, info: "add-ons" },
+    { step: 4, info: "summary" },
+  ];
+
   return (
     <motion.main
       initial={{ opacity: 0, scale: 0.5 }}
@@ -53,8 +60,8 @@ const Wrapper = ({ children }: { children: ReactNode }) => {
       md:overflow-hidden md:p-5 h-[100vh] md:h-[80vh] md:flex "
     >
       <Styles>
-        {[1, 2, 3, 4].map((item) => (
-          <Step key={item} step={item} />
+        {data.map((item) => (
+          <Step key={item.info} {...item} />
         ))}
       </Styles>
       <section className="md:flex md:flex-col justify-center items-center w-full">

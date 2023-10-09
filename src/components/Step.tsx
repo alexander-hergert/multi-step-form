@@ -11,9 +11,10 @@ const Circle = styled.div`
 `;
 interface StepProps {
   step: number;
+  info: string;
 }
 
-const Step = ({ step }: StepProps) => {
+const Step = ({ step, info }: StepProps) => {
   const { page } = useGlobalContext()!;
   return (
     <div className="md:flex gap-5 items-center justify-center">
@@ -31,7 +32,7 @@ const Step = ({ step }: StepProps) => {
           step {step}
         </div>
         <div className="max-md:hidden font-bold text-white uppercase">
-          your info
+          {info}
         </div>
       </div>
     </div>
